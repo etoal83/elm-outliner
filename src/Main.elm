@@ -50,4 +50,16 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-  text ""
+  div []
+      [ Html.form [ onSubmit Submit ]
+        [ input [ value model.input, onInput Input ] []
+        , button
+          [ disabled (String.length model.input < 1) ]
+          [ text "Submit" ]
+        ]
+      , ul [] (List.map viewMemo model.memos)
+      ]
+
+viewMemo : String -> Html Msg
+viewMemo memo =
+  li [] [ text memo ]
