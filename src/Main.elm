@@ -17,11 +17,15 @@ main =
 -- MODEL
 
 type alias Model =
-  {}
+  { input : String
+  , memos : List String
+  }
 
 init : Model
 init =
-  {}
+  { input = ""
+  , memos = []
+  }
 
 
 -- UPDATE
