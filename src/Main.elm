@@ -30,12 +30,20 @@ init =
 
 -- UPDATE
 
-type Msg =
-  Msg
+type Msg
+  = Input String
+  | Submit
 
 update : Msg -> Model -> Model
 update msg model =
-  model
+  case msg of
+    Input input ->
+      { model | input = input }
+    
+    Submit ->
+      { input = ""
+      , memos = model.input :: model.memos
+      }
 
 
 -- VIEW
